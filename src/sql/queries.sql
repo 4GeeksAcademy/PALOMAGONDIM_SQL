@@ -34,11 +34,11 @@ SELECT region_id, count(species_id) FROM observations GROUP BY region_id;
 
 -- MISSION 4
 -- Your query here;
-
+SELECT COUNT(*) FROM observations WHERE region_id = 2;
 
 -- MISSION 5
 -- Your query here;
-
+SELECT COUNT(*) FROM observations WHERE observation_date = '1998-08-08';
 
 -- MISSION 6
 -- Your query here;
