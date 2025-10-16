@@ -29,24 +29,36 @@ SELECT DISTINCT region_id from observations;
 
 
 -- MISSION 3
-SELECT region_id, count(species_id) FROM observations GROUP BY region_id;
+SELECT COUNT (DISTINCT species_id)
+FROM observations
 
 
 -- MISSION 4
--- Your query here;
 SELECT COUNT(*) FROM observations WHERE region_id = 2;
 
 -- MISSION 5
--- Your query here;
 SELECT COUNT(*) FROM observations WHERE observation_date = '1998-08-08';
 
 -- MISSION 6
--- Your query here;
+
+SELECT region_id, COUNT(*) AS total_observaciones
+FROM observations 
+GROUP BY region_id 
+ORDER BY total_observaciones DESC
+LIMIT 1;
 
 
 -- MISSION 7
--- Your query here;
+SELECT species_id, COUNT(*) AS mas_frecuentes 
+FROM observations
+GROUP BY species_id
+ORDER BY mas_frecuentes DESC
+LIMIT 5;
 
 
 -- MISSION 8
--- Your query here;
+SELECT species_id
+FROM
+WHERE
+GROUP BY
+HAVING 
