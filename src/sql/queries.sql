@@ -34,10 +34,14 @@ FROM observations
 
 
 -- MISSION 4
-SELECT COUNT(*) FROM observations WHERE region_id = 2;
+SELECT COUNT(*) 
+FROM observations 
+WHERE region_id = 2;
 
 -- MISSION 5
-SELECT COUNT(*) FROM observations WHERE observation_date = '1998-08-08';
+SELECT COUNT(*) 
+FROM observations 
+WHERE observation_date = '1998-08-08';
 
 -- MISSION 6
 
@@ -57,8 +61,41 @@ LIMIT 5;
 
 
 -- MISSION 8
-SELECT species_id
-FROM
-WHERE
-GROUP BY
-HAVING 
+SELECT species_id, COUNT(*) AS observation_count
+FROM observations
+GROUP BY species_id
+HAVING observation_count < 5
+ORDER BY observation_count ASC;
+ 
+-- MISSION 9
+SELECT observer, COUNT(*) AS total
+FROM observations
+GROUP BY observer
+ORDER BY total DESC;
+
+-- MISSION 10
+SELECT 
+    observations.*,
+    regions.name AS region_name
+FROM observations
+INNER JOIN regions ON observations.region_id = regions.id;
+
+-- MISSION 11
+
+SELECT 
+    observations.*,
+    species.scientific_name
+FROM observations
+INNER JOIN species ON observations.species_id = species.id;
+
+-- MISSION 12
+
+SELECT 
+    regions.name AS region_name,
+    species.scientific_name,
+    COUNT(*) AS observation_count
+FROM observations
+INNER JOIN regions ON observations.region_id = regions.id
+INNER JOIN species ON observations.species_id = species.id
+GROUP BY regions.name, species.scientific_name
+ORDER BY regions.name, observation_count DESC;
